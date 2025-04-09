@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        android:background="@drawable/gradient_bg">
+
+        <LinearLayout
+            android:id="@+id/overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_bg">
+
+                <!-- 图标 -->
+                <ImageView
+                    android:id="@+id/user"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/yonghu"
+                    android:contentDescription="@string/user"/>
+
+                <!-- 标题 -->
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/user"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
+
+                <!-- 按钮 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:id="@+id/AddKidButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/add_kid"
+                        android:backgroundTint="@color/plws"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="24dp"/>
+
+                    <Button
+                        android:id="@+id/AddOldButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/add_old"
+                        android:backgroundTint="@color/plws"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Gray line (border) above navigation bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/navigation_bar"
+        android:background="@android:color/darker_gray" /> <!-- 设置灰色背景 -->
+
+    <!-- Fixed Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center"
+        >
+
+
+        <!-- Navigation buttons/icons with text -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/btn_gaikuang"
+                app:tint="@color/plws" />          <!-- 设置颜色为红色 -->
+            <!-- 图标 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_home"
+                android:textColor="@color/plws"
+                android:textSize="12sp" /> <!-- 文字 -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navigation_button_to_kid"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"> <!-- 设置可点击和可聚焦 -->
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/btn_haizi" /> <!-- 图标 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_kids"
+                android:textSize="12sp"
+                android:textColor="@android:color/black" /> <!-- 文字 -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navigation_button_to_old"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"> <!-- 设置可点击和可聚焦 -->
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/btn_laoren" /> <!-- 图标 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_old"
+                android:textSize="12sp"
+                android:textColor="@android:color/black" /> <!-- 文字 -->
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

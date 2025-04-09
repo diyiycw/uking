@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="225dp"
+    android:layout_margin="10dp"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@drawable/rounded_bg">
+
+    <!-- Title and Score -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Left Title Text -->
+        <TextView
+            android:id="@+id/kid_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kid_overall"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+
+        <!-- Score Text -->
+        <TextView
+            android:id="@+id/kid_today_overview_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="77"
+            android:textSize="36sp"
+            android:textColor="@color/worse_mood"/>
+
+        <!-- Unhappy Emoji Image -->
+        <ImageView
+            android:id="@+id/kid_today_overview_emoji"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/xinqingjiaocha" />
+
+
+        <ImageView
+            android:id="@+id/kid_avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="60dp"
+            android:src="@drawable/nvhai1" />
+
+    </LinearLayout>
+
+    <!-- Explanation Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kid_state_explain"
+        android:textSize="12sp"
+        android:textColor="@color/kid_state_explain"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Relax and Stress Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <!-- Relax Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/relax_time"
+                android:textSize="16sp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/kid_today_relax_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="51"
+                android:textSize="24sp"
+                android:textColor="@color/common_mood"/>
+
+            <TextView
+                android:id="@+id/kid_today_overview_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09:55"
+                android:textSize="14sp"
+                android:textColor="@color/kid_state_explain"/>
+        </LinearLayout>
+
+        <!-- Stress Section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stressful_time"
+                android:textSize="16sp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/kid_today_stress_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="96"
+                android:textSize="24sp"
+                android:textColor="@color/bad_mood"/>
+
+            <TextView
+                android:id="@+id/kid_today_stress_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15:36"
+                android:textSize="14sp"
+                android:textColor="@color/kid_state_explain"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

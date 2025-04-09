@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bg">#FFE1EBFA</color>
+    <color name="plws">#FF6F94CD</color>
+    <color name="gray">#FFA3ABBD</color>
+    <color name="bad_mood">#FFD4A2E5</color>
+    <color name="worse_mood">#FF97DDEA</color>
+    <color name="common_mood">#FFF2ADB5</color>
+    <color name="better_mood">#FF9AF2BC</color>
+    <color name="good_mood">#FFF2D957</color>
+    <color name="kid_state_explain">#FFAAAAAA</color>
+    <color name="view_sleep_report">#FFAAAAAA</color>
+    <color name="orange">#FFFBB05E</color>
+    <color name="cyan">#FF00C3B6</color>
+    <color name="purple">#FF7A00FF</color>
+
+<!--    #A3ABBD-->
+
+</resources>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/kids"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        android:background="@drawable/gradient_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_bg">
+
+            <!-- Title and Score -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Left Title Text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kids_recent"
+                    android:textSize="18sp"
+                    android:textColor="#000000"/>
+
+                <!-- Score Text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="36"
+                    android:textSize="36sp"
+                    android:textColor="@color/good_mood"/>
+
+                <!-- Unhappy Emoji Image -->
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/xinqinghenhao" />
+            </LinearLayout>
+
+            <!-- Explanation Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/one_days"
+                android:textSize="12sp"
+                android:textColor="@color/kid_state_explain"
+                android:layout_marginTop="4dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_bg">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/seven_days"
+                android:textSize="18sp"
+                />
+
+            <com.github.mikephil.charting.charts.BubbleChart
+                android:id="@+id/bubbleChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#f0f0f0" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_bg">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month"
+                    android:textSize="18sp"
+                    />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="#f0f0f0"
+                    android:layout_marginTop="20dp"/>
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:background="@android:color/transparent" /> &lt;!&ndash; 设置透明背景 &ndash;&gt;-->
+
+    </ScrollView>
+
+    <!-- Gray line (border) above navigation bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/navigation_bar_kids"
+        android:background="@android:color/darker_gray" /> <!-- 设置灰色背景 -->
+
+    <!-- Fixed Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/navigation_bar_kids"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center"
+        >
+
+
+        <!-- Navigation buttons/icons with text -->
+        <LinearLayout
+            android:id="@+id/navigation_button_to_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/btn_gaikuang"/>
+            <!-- 图标 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_home"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" /> <!-- 文字 -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/btn_haizi"
+                app:tint="@color/plws" />          <!-- 设置颜色为红色 -->
+            <!-- 图标 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_kids"
+                android:textSize="12sp"
+                android:textColor="@color/plws" /> <!-- 文字 -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navigation_button_kid_to_old"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/btn_laoren" /> <!-- 图标 -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_old"
+                android:textSize="12sp"
+                android:textColor="@android:color/black" /> <!-- 文字 -->
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

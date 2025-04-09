@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_bg"
+    android:gravity="center">
+
+    <!-- Header section with icon, title and link -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Sleep Icon -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/laoren"
+            android:layout_marginRight="8dp" />
+
+        <!-- Sleep Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/old_overall"
+            android:textSize="18sp"
+            android:textColor="#000000" />
+
+        <!-- Spacer to push the link to the right -->
+<!--        <View-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1" />-->
+
+        <ImageView
+            android:id="@+id/kid_avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="130dp"
+            android:src="@drawable/grandma1" />
+        <!-- Sleep Report Link -->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/view_sleep_report"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textColor="@color/view_sleep_report"/>-->
+
+    </LinearLayout>
+
+    <!-- Sleep Data Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Duration Column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate"
+                android:textSize="16sp"
+                android:textColor="@color/purple" />
+
+            <TextView
+                android:id="@+id/old_heart_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80"
+                android:textSize="18sp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!-- Quality Column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breath_rate"
+                android:textSize="16sp"
+                android:textColor="@color/plws" />
+
+            <TextView
+                android:id="@+id/old_breath_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="32"
+                android:textSize="18sp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!-- Average Heart Rate Column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动时长"
+                android:textSize="16sp"
+                android:textColor="#AAAAAA" />
+
+            <TextView
+                android:id="@+id/old_active_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3.1h"
+                android:textSize="18sp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

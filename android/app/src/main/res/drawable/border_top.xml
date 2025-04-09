@@ -1,0 +1,13 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景颜色设置为白色 -->
+    <solid android:color="@color/white"/>
+
+    <!-- 设置边框大小 -->
+    <size android:height="1dp"/> <!-- 控制整个形状的高度 -->
+    <size android:width="1dp"/> <!-- 控制整个形状的宽度 -->
+
+    <!-- 设置边框的颜色和宽度 -->
+    <stroke
+        android:color="@color/gray"/>  <!-- 边框颜色为灰色 -->
+<!--        android:width="2dp"/>        &lt;!&ndash; 边框宽度为 2dp &ndash;&gt;-->
+</shape>

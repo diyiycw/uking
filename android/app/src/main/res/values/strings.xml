@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">UWB_3V5</string>
+    <string name="user">3V5</string>
+    <string name="add_kid">向家庭成员中添加儿童</string>
+    <string name="add_old">向家庭成员中添加老人</string>
+    <string name="kid_overall">孩子今日整体</string>
+    <string name="relax_time">轻松时刻</string>
+    <string name="stressful_time">压力时刻</string>
+    <string name="kid_state_explain">*表情贴纸为一天中出现最多的状态</string>
+    <string name="old_overall">老人今日整体</string>
+    <string name="heart_rate">心率</string>
+    <string name="heart_rate_trend">心率变化</string>
+    <string name="breath_rate">呼吸率</string>
+    <string name="breath_rate_trend">呼吸率变化</string>
+    <string name="in_bed_state">在床状态</string>
+    <string name="view_sleep_report">查看睡眠报告 ></string>
+    <string name="btn_home">概况</string>
+    <string name="btn_kids">儿童</string>
+    <string name="kids_recent">孩子最近压力</string>
+    <string name="one_days">今日压力变化</string>
+    <string name="seven_days">一周内压力</string>
+    <string name="month">一月内压力</string>
+    <string name="btn_old">老人</string>
+    <string name="current_old">老人最近状态</string>
+    <string name="rest_old">休息时长</string>
+    <string name="day_heart">今日状态变化</string>
+    <string name="seven_old">一周内活动时长</string>
+    <string name="month_old">一月内心率变化</string>
+    <string name="alert">状态预警</string>
+
+
+</resources>
