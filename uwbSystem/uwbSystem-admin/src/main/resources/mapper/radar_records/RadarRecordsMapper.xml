@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uwbSystem.radar_records.mapper.RadarRecordsMapper">
+    
+    <resultMap type="RadarRecords" id="RadarRecordsResult">
+        <result property="espId"    column="esp_id"    />
+        <result property="recordTime"    column="record_time"    />
+        <result property="heartRate"    column="heart_rate"    />
+        <result property="respirationRate"    column="respiration_rate"    />
+        <result property="presentState"    column="present_state"    />
+        <result property="activeStatus"    column="active_status"    />
+        <result property="nearestTargetDistance"    column="nearest_target_distance"    />
+        <result property="vitalSignAbnormality"    column="vital_sign_abnormality"    />
+        <result property="signalStrength"    column="signal_strength"    />
+        <result property="durationOfTimeInBed"    column="duration_of_time_in_bed"    />
+        <result property="durationOfTimeOutOfBed"    column="duration_of_time_out_of_bed"    />
+        <result property="roomId"    column="room_id"    />
+        <result property="roomName"    column="room_name"    />
+    </resultMap>
+
+    <sql id="selectRadarRecordsVo">
+        select esp_id, record_time, heart_rate, respiration_rate, present_state, active_status, nearest_target_distance, vital_sign_abnormality, signal_strength, duration_of_time_in_bed, duration_of_time_out_of_bed
+            ,room_id, room_name
+        from radar_records natural join esp_room natural join rooms
+    </sql>
+
+    <select id="selectRadarRecordsList" parameterType="RadarRecords" resultMap="RadarRecordsResult">
+        <include refid="selectRadarRecordsVo"/>
+        <where>
+            <if test="espId != null "> and esp_id = #{espId}</if>
+            <if test="heartRate != null "> and heart_rate = #{heartRate}</if>
+            <if test="respirationRate != null "> and respiration_rate = #{respirationRate}</if>
+            <if test="presentState != null "> and present_state = #{presentState}</if>
+            <if test="activeStatus != null "> and active_status = #{activeStatus}</if>
+            <if test="nearestTargetDistance != null "> and nearest_target_distance = #{nearestTargetDistance}</if>
+            <if test="vitalSignAbnormality != null "> and vital_sign_abnormality = #{vitalSignAbnormality}</if>
+            <if test="signalStrength != null "> and signal_strength = #{signalStrength}</if>
+            <if test="durationOfTimeInBed != null "> and duration_of_time_in_bed = #{durationOfTimeInBed}</if>
+            <if test="durationOfTimeOutOfBed != null "> and duration_of_time_out_of_bed = #{durationOfTimeOutOfBed}</if>
+        </where>
+    </select>
+    
+    <select id="selectRadarRecordsByEspId" parameterType="Integer" resultMap="RadarRecordsResult">
+        <include refid="selectRadarRecordsVo"/>
+        where esp_id = #{espId}
+    </select>
+
+    <insert id="insertRadarRecords" parameterType="RadarRecords">
+        insert into radar_records
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="espId != null">esp_id,</if>
+            <if test="recordTime != null">record_time,</if>
+            <if test="heartRate != null">heart_rate,</if>
+            <if test="respirationRate != null">respiration_rate,</if>
+            <if test="presentState != null">present_state,</if>
+            <if test="activeStatus != null">active_status,</if>
+            <if test="nearestTargetDistance != null">nearest_target_distance,</if>
+            <if test="vitalSignAbnormality != null">vital_sign_abnormality,</if>
+            <if test="signalStrength != null">signal_strength,</if>
+            <if test="durationOfTimeInBed != null">duration_of_time_in_bed,</if>
+            <if test="durationOfTimeOutOfBed != null">duration_of_time_out_of_bed,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="espId != null">#{espId},</if>
+            <if test="recordTime != null">#{recordTime},</if>
+            <if test="heartRate != null">#{heartRate},</if>
+            <if test="respirationRate != null">#{respirationRate},</if>
+            <if test="presentState != null">#{presentState},</if>
+            <if test="activeStatus != null">#{activeStatus},</if>
+            <if test="nearestTargetDistance != null">#{nearestTargetDistance},</if>
+            <if test="vitalSignAbnormality != null">#{vitalSignAbnormality},</if>
+            <if test="signalStrength != null">#{signalStrength},</if>
+            <if test="durationOfTimeInBed != null">#{durationOfTimeInBed},</if>
+            <if test="durationOfTimeOutOfBed != null">#{durationOfTimeOutOfBed},</if>
+         </trim>
+    </insert>
+
+    <update id="updateRadarRecords" parameterType="RadarRecords">
+        update radar_records
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="recordTime != null">record_time = #{recordTime},</if>
+            <if test="heartRate != null">heart_rate = #{heartRate},</if>
+            <if test="respirationRate != null">respiration_rate = #{respirationRate},</if>
+            <if test="presentState != null">present_state = #{presentState},</if>
+            <if test="activeStatus != null">active_status = #{activeStatus},</if>
+            <if test="nearestTargetDistance != null">nearest_target_distance = #{nearestTargetDistance},</if>
+            <if test="vitalSignAbnormality != null">vital_sign_abnormality = #{vitalSignAbnormality},</if>
+            <if test="signalStrength != null">signal_strength = #{signalStrength},</if>
+            <if test="durationOfTimeInBed != null">duration_of_time_in_bed = #{durationOfTimeInBed},</if>
+            <if test="durationOfTimeOutOfBed != null">duration_of_time_out_of_bed = #{durationOfTimeOutOfBed},</if>
+        </trim>
+        where esp_id = #{espId}
+    </update>
+
+    <delete id="deleteRadarRecordsByEspId" parameterType="Integer">
+        delete from radar_records where esp_id = #{espId}
+    </delete>
+
+    <delete id="deleteRadarRecordsByEspIds" parameterType="String">
+        delete from radar_records where esp_id in 
+        <foreach item="espId" collection="array" open="(" separator="," close=")">
+            #{espId}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uwbSystem.esps.mapper.EspsMapper">
+    
+    <resultMap type="Esps" id="EspsResult">
+        <result property="espId"    column="esp_id"    />
+        <result property="conductId"    column="conduct_id"    />
+        <result property="registrationTime"    column="registration_time"    />
+    </resultMap>
+
+    <sql id="selectEspsVo">
+        select esp_id, conduct_id, registration_time from esps
+    </sql>
+
+    <select id="selectEspsList" parameterType="Esps" resultMap="EspsResult">
+        <include refid="selectEspsVo"/>
+        <where>  
+            <if test="conductId != null  and conductId != ''"> and conduct_id = #{conductId}</if>
+            <if test="registrationTime != null "> and registration_time = #{registrationTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectEspsByEspId" parameterType="Integer" resultMap="EspsResult">
+        <include refid="selectEspsVo"/>
+        where esp_id = #{espId}
+    </select>
+
+    <insert id="insertEsps" parameterType="Esps" useGeneratedKeys="true" keyProperty="espId">
+        insert into esps
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="conductId != null and conductId != ''">conduct_id,</if>
+            <if test="registrationTime != null">registration_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="conductId != null and conductId != ''">#{conductId},</if>
+            <if test="registrationTime != null">#{registrationTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateEsps" parameterType="Esps">
+        update esps
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="conductId != null and conductId != ''">conduct_id = #{conductId},</if>
+            <if test="registrationTime != null">registration_time = #{registrationTime},</if>
+        </trim>
+        where esp_id = #{espId}
+    </update>
+
+    <delete id="deleteEspsByEspId" parameterType="Integer">
+        delete from esps where esp_id = #{espId}
+    </delete>
+
+    <delete id="deleteEspsByEspIds" parameterType="String">
+        delete from esps where esp_id in 
+        <foreach item="espId" collection="array" open="(" separator="," close=")">
+            #{espId}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uwbSystem.esp_room.mapper.EspRoomMapper">
+    
+    <resultMap type="EspRoom" id="EspRoomResult">
+        <result property="espId"    column="esp_id"    />
+        <result property="roomId"    column="room_id"    />
+    </resultMap>
+
+    <sql id="selectEspRoomVo">
+        select esp_id, room_id from esp_room
+    </sql>
+
+    <select id="selectEspRoomList" parameterType="EspRoom" resultMap="EspRoomResult">
+        <include refid="selectEspRoomVo"/>
+        <where>  
+            <if test="espId != null "> and esp_id = #{espId}</if>
+            <if test="roomId != null "> and room_id = #{roomId}</if>
+        </where>
+    </select>
+    
+    <select id="selectEspRoomByEspId" parameterType="Integer" resultMap="EspRoomResult">
+        <include refid="selectEspRoomVo"/>
+        where esp_id = #{espId}
+    </select>
+
+    <insert id="insertEspRoom" parameterType="EspRoom">
+        insert into esp_room
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="espId != null">esp_id,</if>
+            <if test="roomId != null">room_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="espId != null">#{espId},</if>
+            <if test="roomId != null">#{roomId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateEspRoom" parameterType="EspRoom">
+        update esp_room
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="roomId != null">room_id = #{roomId},</if>
+        </trim>
+        where esp_id = #{espId}
+    </update>
+
+    <delete id="deleteEspRoomByEspId" parameterType="Integer">
+        delete from esp_room where esp_id = #{espId}
+    </delete>
+
+    <delete id="deleteEspRoomByEspIds" parameterType="String">
+        delete from esp_room where esp_id in 
+        <foreach item="espId" collection="array" open="(" separator="," close=")">
+            #{espId}
+        </foreach>
+    </delete>
+</mapper>

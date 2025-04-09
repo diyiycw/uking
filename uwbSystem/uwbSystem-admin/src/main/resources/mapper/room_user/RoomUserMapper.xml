@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uwbSystem.room_user.mapper.RoomUserMapper">
+    
+    <resultMap type="RoomUser" id="RoomUserResult">
+        <result property="roomId"    column="room_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="registerTime"    column="register_time"    />
+    </resultMap>
+
+    <sql id="selectRoomUserVo">
+        select room_id, user_id, register_time from room_user
+    </sql>
+
+    <select id="selectRoomUserList" parameterType="RoomUser" resultMap="RoomUserResult">
+        <include refid="selectRoomUserVo"/>
+        <where>  
+            <if test="registerTime != null "> and register_time = #{registerTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectRoomUserByRoomId" parameterType="Integer" resultMap="RoomUserResult">
+        <include refid="selectRoomUserVo"/>
+        where room_id = #{roomId}
+    </select>
+
+    <insert id="insertRoomUser" parameterType="RoomUser">
+        insert into room_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roomId != null">room_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="registerTime != null">register_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roomId != null">#{roomId},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="registerTime != null">#{registerTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateRoomUser" parameterType="RoomUser">
+        update room_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="registerTime != null">register_time = #{registerTime},</if>
+        </trim>
+        where room_id = #{roomId}
+    </update>
+
+    <delete id="deleteRoomUserByRoomId" parameterType="Integer">
+        delete from room_user where room_id = #{roomId}
+    </delete>
+
+    <delete id="deleteRoomUserByRoomIds" parameterType="String">
+        delete from room_user where room_id in 
+        <foreach item="roomId" collection="array" open="(" separator="," close=")">
+            #{roomId}
+        </foreach>
+    </delete>
+</mapper>

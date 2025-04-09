@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uwbSystem.rooms.mapper.RoomsMapper">
+    
+    <resultMap type="Rooms" id="RoomsResult">
+        <result property="roomId"    column="room_id"    />
+        <result property="roomName"    column="room_name"    />
+    </resultMap>
+
+    <sql id="selectRoomsVo">
+        select room_id, room_name from rooms
+    </sql>
+
+    <select id="selectRoomsList" parameterType="Rooms" resultMap="RoomsResult">
+        <include refid="selectRoomsVo"/>
+        <where>  
+            <if test="roomName != null  and roomName != ''"> and room_name like concat('%', #{roomName}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectRoomsByRoomId" parameterType="Integer" resultMap="RoomsResult">
+        <include refid="selectRoomsVo"/>
+        where room_id = #{roomId}
+    </select>
+
+    <insert id="insertRooms" parameterType="Rooms" useGeneratedKeys="true" keyProperty="roomId">
+        insert into rooms
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roomName != null and roomName != ''">room_name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roomName != null and roomName != ''">#{roomName},</if>
+         </trim>
+    </insert>
+
+    <update id="updateRooms" parameterType="Rooms">
+        update rooms
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="roomName != null and roomName != ''">room_name = #{roomName},</if>
+        </trim>
+        where room_id = #{roomId}
+    </update>
+
+    <delete id="deleteRoomsByRoomId" parameterType="Integer">
+        delete from rooms where room_id = #{roomId}
+    </delete>
+
+    <delete id="deleteRoomsByRoomIds" parameterType="String">
+        delete from rooms where room_id in 
+        <foreach item="roomId" collection="array" open="(" separator="," close=")">
+            #{roomId}
+        </foreach>
+    </delete>
+</mapper>
